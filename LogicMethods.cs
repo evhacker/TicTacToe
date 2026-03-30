@@ -17,7 +17,6 @@ public static class LogicMethods
         }
         else
         {
-            UIMethods.DisplayMessageTaken();
             return false;
         }
     }

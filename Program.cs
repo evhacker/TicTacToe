@@ -9,7 +9,7 @@ class Program
         const string SYMBOL_AI = "O";
 
         //initialize array
-        
+
         string[,] array = new string[DIM, DIM];
         //populate array
         for (int row = 0; row < DIM; row++)
@@ -42,6 +42,10 @@ class Program
                 if (userInputValid)
                 {
                     break;
+                }
+                else
+                {
+                    UIMethods.DisplayMessageTaken();
                 }
             }
 
