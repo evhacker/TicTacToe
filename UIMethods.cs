@@ -2,7 +2,6 @@ namespace TicTacToe;
 
 public static class UIMethods
 {
-    
     /// <summary>
     /// Displays welcome message
     /// </summary>
@@ -39,16 +38,24 @@ public static class UIMethods
     }
 
     /// <summary>
+    /// Displays question to user
+    /// </summary>
+    /// <param name="question">Question to display to user</param>
+    public static void DisplayQuestion(string question)
+    {
+        Console.WriteLine(question);
+    }
+
+    /// <summary>
     /// Gets user input (user chooses row/col)
     /// </summary>
     /// <param name="question">Question to be printed to console</param>
     /// <returns>row/col chosen by the user</returns>
-    public static int InputUser(string question)
+    public static int GetUserInput()
     {
         int inputUser = 0;
         while (true)
         {
-            Console.WriteLine(question);
             bool success = int.TryParse(Console.ReadLine(), out inputUser);
             if (success && inputUser < 4 && inputUser > 0)
             {
@@ -76,7 +83,7 @@ public static class UIMethods
     {
         Console.WriteLine("You win!");
     }
-    
+
     /// <summary>
     /// Display message Computer wins
     /// </summary>
@@ -92,5 +99,4 @@ public static class UIMethods
     {
         Console.WriteLine("Tie! Game ends...");
     }
-    
 }

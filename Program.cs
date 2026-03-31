@@ -35,8 +35,10 @@ class Program
         {
             while (true) //input validation
             {
-                rowUser = UIMethods.InputUser("Please choose a row - 1,2 or 3 and press Enter");
-                colUser = UIMethods.InputUser("Please choose a column - 1,2 or 3 and press Enter");
+                UIMethods.DisplayQuestion("Please choose a row - 1,2 or 3 and press Enter");
+                rowUser = UIMethods.GetUserInput();
+                UIMethods.DisplayQuestion("Please choose a column - 1,2 or 3 and press Enter");
+                colUser = UIMethods.GetUserInput();
 
                 bool userInputValid = LogicMethods.CheckUserInput(rowUser, colUser, array);
                 if (userInputValid)
