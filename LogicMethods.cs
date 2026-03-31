@@ -29,7 +29,7 @@ public static class LogicMethods
     /// <param name="rng">random number</param>
     /// <param name="symbol">AI symbol to put</param>
     /// <returns>array filled with AI input</returns>
-    public static string[,] AIInput(string[,] array, Random rng, string symbol)
+    public static string[,] GetAIInput(string[,] array, Random rng, string symbol)
     {
         while (true)
         {
