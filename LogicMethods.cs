@@ -54,33 +54,17 @@ public static class LogicMethods
     /// <returns>true or false</returns>
     public static bool CheckIfWin(string[,] array, string symbol)
     {
-        bool win = false;
         //check all horizontal lines
-        for (int row = 0; row < array.GetLength(0); row++)
-        {
-            if (array[row, 0] == symbol && array[row, 1] == symbol && array[row, 2] == symbol)
-            {
-                win = true;
-            }
-        }
-
+        bool winHorizontal = CheckAllHorizontalLines(array, symbol);
+        
         //check all vertical lines
-        for (int col = 0; col < array.GetLength(1); col++)
-        {
-            if (array[0, col] == symbol && array[1, col] == symbol && array[2, col] == symbol)
-            {
-                win = true;
-            }
-        }
+        bool winVertical = CheckAllVerticalLines(array, symbol);
 
-        //check diagonal 1
-        if (array[0, 0] == symbol && array[1, 1] == symbol && array[2, 2] == symbol)
-        {
-            win = true;
-        }
-
-        //check diagonal 2
-        if (array[0, 2] == symbol && array[1, 1] == symbol && array[2, 0] == symbol)
+        //check diagonals
+        bool winDiagonal = CheckAllDiagonalLines(array, symbol);
+        
+        bool win = false;
+        if (winHorizontal || winVertical || winDiagonal)
         {
             win = true;
         }
@@ -89,8 +73,136 @@ public static class LogicMethods
     }
 
     /// <summary>
-    /// Checks if there is at least one empty field in array
+    /// Checks all horizontal Lines for wins
     /// </summary>
+    /// <param name="array">array to check</param>
+    /// <param name="symbol">symbol to check</param>
+    /// <returns></returns>
+    public static bool CheckAllHorizontalLines(string[,] array, string symbol)
+    {
+        bool win = false;
+        for (int row = 0; row < array.GetLength(0); row++)
+        {
+            bool boolWinRow = true;
+            for (int col = 1; col < array.GetLength(1); col++)
+            {
+                if (array[row, col] != array[row, col - 1])
+                {
+                    boolWinRow = false;
+                }
+
+                if (array[row, col] != symbol)
+                {
+                    boolWinRow = false;
+                }
+            }
+
+            if (boolWinRow)
+            {
+                win = true;
+            }
+        }
+
+        return win;
+    }
+
+    /// <summary>
+    /// Checks all vertical Lines for wins
+    /// </summary>
+    /// <param name="array">array to check</param>
+    /// <param name="symbol">symbol to check</param>
+    /// <returns></returns>
+    public static bool CheckAllVerticalLines(string[,] array, string symbol)
+    {
+        bool win = false;
+        for (int col = 0; col < array.GetLength(1); col++)
+        {
+            bool boolWinCol = true;
+            for (int row = 1; row < array.GetLength(0); row++)
+            {
+                if (array[row, col] != array[row - 1, col])
+                {
+                    boolWinCol = false;
+                }
+
+                if (array[row, col] != symbol)
+                {
+                    boolWinCol = false;
+                }
+            }
+
+            if (boolWinCol)
+            {
+                win = true;
+            }
+        }
+
+        return win;
+    }
+
+
+    /// <summary>
+    /// Checks both diagonals of an array for wins
+    /// </summary>
+    /// <param name="array">array to check</param>
+    /// <param name="symbol">symbol to check</param>
+    /// <returns></returns>
+    public static bool CheckAllDiagonalLines(string[,] array, string symbol)
+    {
+        bool win = false;
+        //Diagonal 1
+        bool boolWinDiag = true;
+        int row = 1;
+        for (int col = 1; col < array.GetLength(1); col++)
+        {
+            if (array[row, col] != array[row - 1, col - 1])
+            {
+                boolWinDiag = false;
+            }
+
+            if (array[row, col] != symbol)
+            {
+                boolWinDiag = false;
+            }
+
+            row++;
+        }
+
+        if (boolWinDiag)
+        {
+            win = true;
+        }
+
+        //Diagonal 2
+        boolWinDiag = true;
+        row = 1;
+        for (int col = array.GetLength(1) - 2; col >= 0; col--)
+        {
+            if (array[row, col] != array[row - 1, col + 1])
+            {
+                boolWinDiag = false;
+            }
+
+            if (array[row, col] != symbol)
+            {
+                boolWinDiag = false;
+            }
+
+            row++;
+        }
+
+        if (boolWinDiag)
+        {
+            win = true;
+        }
+
+        return win;
+    }
+
+
+    /// <summary>
+    /// Checks if there is at least one empty field in array
+    /// /// </summary>
     /// <param name="array">array to check</param>
     /// <returns>true or false</returns>
     public static bool CheckIfEmptyField(string[,] array)
@@ -106,6 +218,7 @@ public static class LogicMethods
                 }
             }
         }
+
         return empty;
     }
 }
