@@ -42,7 +42,7 @@ class Program
                 UIMethods.DisplayQuestion("Please choose a column - 1,2 or 3 and press Enter");
                 colUser = UIMethods.GetUserInput();
 
-                bool userInputValid = LogicMethods.CheckUserInput(rowUser, colUser, array);
+                bool userInputValid = LogicMethods.CheckIfSlotIsAvailable(rowUser, colUser, array);
                 if (userInputValid)
                 {
                     break;

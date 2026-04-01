@@ -9,16 +9,9 @@ public static class LogicMethods
     /// <param name="userCol">column chosen by user</param>
     /// <param name="array">array to be checked</param>
     /// <returns>true or false</returns>
-    public static bool CheckUserInput(int userRow, int userCol, string[,] array)
+    public static bool CheckIfSlotIsAvailable(int userRow, int userCol, string[,] array) 
     {
-        if (array[userRow - 1, userCol - 1] == " ")
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return array[userRow - 1, userCol - 1] == " ";
     }
 
 
@@ -56,13 +49,13 @@ public static class LogicMethods
     {
         //check all horizontal lines
         bool winHorizontal = CheckAllHorizontalLines(array, symbol);
-        
+
         //check all vertical lines
         bool winVertical = CheckAllVerticalLines(array, symbol);
 
         //check diagonals
         bool winDiagonal = CheckAllDiagonalLines(array, symbol);
-        
+
         bool win = false;
         if (winHorizontal || winVertical || winDiagonal)
         {
