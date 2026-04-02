@@ -2,8 +2,6 @@
 
 class Program
 {
-    private static readonly Random rng = new Random();
-
     static void Main(string[] args)
     {
         const int DIM = 3;
@@ -74,7 +72,7 @@ class Program
             }
 
             //Update Array AI Input
-            array = LogicMethods.GetAIInput(array, rng, SYMBOL_AI);
+            array = LogicMethods.GetAIInput(array, SYMBOL_AI);
             UIMethods.PrintArray(array);
 
             winAI = LogicMethods.CheckIfWin(array, SYMBOL_AI);
