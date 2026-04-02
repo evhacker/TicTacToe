@@ -47,22 +47,9 @@ public static class LogicMethods
     /// <returns>true or false</returns>
     public static bool CheckIfWin(string[,] array, string symbol)
     {
-        //check all horizontal lines
-        bool winHorizontal = CheckAllHorizontalLines(array, symbol);
-
-        //check all vertical lines
-        bool winVertical = CheckAllVerticalLines(array, symbol);
-
-        //check diagonals
-        bool winDiagonal = CheckAllDiagonalLines(array, symbol);
-
-        bool win = false;
-        if (winHorizontal || winVertical || winDiagonal)
-        {
-            win = true;
-        }
-
-        return win;
+        return CheckAllHorizontalLines(array, symbol) ||
+               CheckAllVerticalLines(array, symbol) ||
+               CheckAllDiagonalLines(array, symbol);
     }
 
     /// <summary>
