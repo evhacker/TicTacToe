@@ -22,10 +22,9 @@ public static class LogicMethods
     /// generates random AI input and checks if field still available
     /// </summary>
     /// <param name="array">array to fill and check</param>
-    /// <param name="rng">random number</param>
     /// <param name="symbol">AI symbol to put</param>
     /// <returns>array filled with AI input</returns>
-    public static string[,] GetAIInput(string[,] array, string symbol)
+    public static string[,] GetAIInput(string[,] array)
     {
         while (true)
         {
@@ -34,7 +33,7 @@ public static class LogicMethods
 
             if (array[AIRow, AICol] == " ")
             {
-                array[AIRow, AICol] = symbol;
+                array[AIRow, AICol] = Constants.SYMBOL_AI;
                 break;
             }
         }
